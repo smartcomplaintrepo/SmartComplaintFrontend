@@ -1,0 +1,170 @@
+<div class="dashboard">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div>
+      <h1>Dashboard</h1>
+      <p>Welcome back! Here's an overview of your complaints.</p>
+    </div>
+
+    <button class="new-complaint-btn">
+      + New Complaint
+    </button>
+  </div>
+
+
+  <!-- Statistics Cards -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-icon total">
+        📋
+      </div>
+
+      <div class="stat-content">
+        <span>Total Complaints</span>
+        <h2>{{ totalComplaints }}</h2>
+      </div>
+    </div>
+
+
+    <div class="stat-card">
+      <div class="stat-icon pending">
+        ⏳
+      </div>
+
+      <div class="stat-content">
+        <span>Pending</span>
+        <h2>{{ pendingComplaints }}</h2>
+      </div>
+    </div>
+
+
+    <div class="stat-card">
+      <div class="stat-icon progress">
+        🔄
+      </div>
+
+      <div class="stat-content">
+        <span>In Progress</span>
+        <h2>{{ inProgressComplaints }}</h2>
+      </div>
+    </div>
+
+
+    <div class="stat-card">
+      <div class="stat-icon resolved">
+        ✓
+      </div>
+
+      <div class="stat-content">
+        <span>Resolved</span>
+        <h2>{{ resolvedComplaints }}</h2>
+      </div>
+    </div>
+
+
+    <div class="stat-card">
+      <div class="stat-icon closed">
+        🔒
+      </div>
+
+      <div class="stat-content">
+        <span>Closed</span>
+        <h2>{{ closedComplaints }}</h2>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Recent Complaints -->
+  <div class="content-card">
+
+    <div class="card-header">
+      <div>
+        <h2>Recent Complaints</h2>
+        <p>Latest complaints submitted by users</p>
+      </div>
+
+      <button class="view-all-btn">
+        View All
+      </button>
+    </div>
+
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Complaint</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+
+          <tr *ngFor="let complaint of recentComplaints">
+
+            <td>
+              <span class="complaint-id">
+                #{{ complaint.id }}
+              </span>
+            </td>
+
+            <td>
+              <div class="complaint-title">
+                {{ complaint.title }}
+              </div>
+            </td>
+
+            <td>
+              {{ complaint.category }}
+            </td>
+
+            <td>
+
+              <span
+                class="priority"
+                [ngClass]="complaint.priority.toLowerCase()">
+
+                {{ complaint.priority }}
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <span
+                class="status"
+                [ngClass]="complaint.status.toLowerCase().replace(' ', '-')">
+
+                {{ complaint.status }}
+
+              </span>
+
+            </td>
+
+            <td>
+              {{ complaint.date }}
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
