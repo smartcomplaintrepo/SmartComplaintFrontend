@@ -1,1 +1,299 @@
-<p>complaint-list works!</p>
+<div class="page-container">
+
+  <!-- Page Header -->
+  <div class="page-header">
+
+    <div>
+      <h1>My Complaints</h1>
+      <p>View and track all your submitted complaints.</p>
+    </div>
+
+    <button class="create-btn">
+      + Create Complaint
+    </button>
+
+  </div>
+
+
+  <!-- Filters -->
+  <div class="filter-card">
+
+    <div class="search-box">
+
+      <label>Search</label>
+
+      <input
+        type="text"
+        placeholder="Search complaint number or title..."
+      />
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label>Status</label>
+
+      <select>
+        <option value="">All Status</option>
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Resolved">Resolved</option>
+      </select>
+
+    </div>
+
+
+    <div class="filter-group">
+
+      <label>Priority</label>
+
+      <select>
+        <option value="">All Priority</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <!-- Complaint Table -->
+  <div class="complaints-card">
+
+    <div class="table-header">
+
+      <div>
+        <h2>Complaint List</h2>
+        <span>5 complaints found</span>
+      </div>
+
+    </div>
+
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Complaint No.</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr>
+
+            <td>
+              <strong>CMP-20260820-0001</strong>
+            </td>
+
+            <td>
+              Wi-Fi not working
+            </td>
+
+            <td>
+              IT
+            </td>
+
+            <td>
+              <span class="badge priority-high">
+                High
+              </span>
+            </td>
+
+            <td>
+              <span class="badge status-progress">
+                In Progress
+              </span>
+            </td>
+
+            <td>
+              20 Aug 2026
+            </td>
+
+            <td>
+              <button class="view-btn">
+                View
+              </button>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <strong>CMP-20260819-0002</strong>
+            </td>
+
+            <td>
+              Projector issue
+            </td>
+
+            <td>
+              Infrastructure
+            </td>
+
+            <td>
+              <span class="badge priority-medium">
+                Medium
+              </span>
+            </td>
+
+            <td>
+              <span class="badge status-resolved">
+                Resolved
+              </span>
+            </td>
+
+            <td>
+              19 Aug 2026
+            </td>
+
+            <td>
+              <button class="view-btn">
+                View
+              </button>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <strong>CMP-20260818-0003</strong>
+            </td>
+
+            <td>
+              Classroom cleaning
+            </td>
+
+            <td>
+              Cleaning
+            </td>
+
+            <td>
+              <span class="badge priority-low">
+                Low
+              </span>
+            </td>
+
+            <td>
+              <span class="badge status-pending">
+                Pending
+              </span>
+            </td>
+
+            <td>
+              18 Aug 2026
+            </td>
+
+            <td>
+              <button class="view-btn">
+                View
+              </button>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <strong>CMP-20260817-0004</strong>
+            </td>
+
+            <td>
+              Classroom fan issue
+            </td>
+
+            <td>
+              Electrical
+            </td>
+
+            <td>
+              <span class="badge priority-high">
+                High
+              </span>
+            </td>
+
+            <td>
+              <span class="badge status-progress">
+                In Progress
+              </span>
+            </td>
+
+            <td>
+              17 Aug 2026
+            </td>
+
+            <td>
+              <button class="view-btn">
+                View
+              </button>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <strong>CMP-20260815-0005</strong>
+            </td>
+
+            <td>
+              Water cooler issue
+            </td>
+
+            <td>
+              Infrastructure
+            </td>
+
+            <td>
+              <span class="badge priority-medium">
+                Medium
+              </span>
+            </td>
+
+            <td>
+              <span class="badge status-resolved">
+                Resolved
+              </span>
+            </td>
+
+            <td>
+              15 Aug 2026
+            </td>
+
+            <td>
+              <button class="view-btn">
+                View
+              </button>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

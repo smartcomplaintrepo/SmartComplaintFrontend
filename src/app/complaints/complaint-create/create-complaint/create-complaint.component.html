@@ -1,1 +1,226 @@
-<p>create-complaint works!</p>
+<div class="page-container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1>Create Complaint</h1>
+      <p>Submit your complaint and track it easily.</p>
+    </div>
+  </div>
+
+  <!-- Complaint Form -->
+  <form (ngSubmit)="submitComplaint()">
+
+  <!-- Category -->
+  <div class="form-group">
+
+    <label>
+      Category <span>*</span>
+    </label>
+
+    <select
+      name="category"
+      [(ngModel)]="category">
+
+      <option value="">
+        Select Category
+      </option>
+
+      <option value="IT">
+        IT / Computer
+      </option>
+
+      <option value="Infrastructure">
+        Infrastructure
+      </option>
+
+      <option value="Cleaning">
+        Cleaning
+      </option>
+
+      <option value="Electrical">
+        Electrical
+      </option>
+
+      <option value="Other">
+        Other
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <!-- Title -->
+  <div class="form-group">
+
+    <label>
+      Complaint Title <span>*</span>
+    </label>
+
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      placeholder="Enter complaint title"
+    />
+
+  </div>
+
+
+  <!-- Priority -->
+  <div class="form-group">
+
+    <label>
+      Priority <span>*</span>
+    </label>
+
+    <div class="priority-options">
+
+      <label class="priority-option">
+
+        <input
+          type="radio"
+          name="priority"
+          value="Low"
+          [(ngModel)]="priority"
+        />
+
+        <span class="priority-low">
+          Low
+        </span>
+
+      </label>
+
+
+      <label class="priority-option">
+
+        <input
+          type="radio"
+          name="priority"
+          value="Medium"
+          [(ngModel)]="priority"
+        />
+
+        <span class="priority-medium">
+          Medium
+        </span>
+
+      </label>
+
+
+      <label class="priority-option">
+
+        <input
+          type="radio"
+          name="priority"
+          value="High"
+          [(ngModel)]="priority"
+        />
+
+        <span class="priority-high">
+          High
+        </span>
+
+      </label>
+
+    </div>
+
+  </div>
+
+
+  <!-- Description -->
+  <div class="form-group">
+
+    <label>
+      Description <span>*</span>
+    </label>
+
+    <textarea
+      name="description"
+      rows="6"
+      [(ngModel)]="description"
+      placeholder="Describe your complaint in detail..."
+    ></textarea>
+
+    <small>
+      Please provide enough information so the complaint can be understood clearly.
+    </small>
+
+  </div>
+
+
+  <!-- Buttons -->
+  <div class="form-actions">
+
+    <button
+      type="button"
+      class="cancel-btn"
+      (click)="cancel()">
+
+      Cancel
+
+    </button>
+
+
+    <button
+      type="submit"
+      class="submit-btn">
+
+      Submit Complaint
+
+    </button>
+
+  </div>
+
+</form>
+
+</div>
+
+
+<!-- Success Popup -->
+
+@if (showSuccessPopup) {
+
+  <div class="popup-overlay">
+
+    <div class="success-popup">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>Complaint Submitted!</h2>
+
+      <p class="success-message">
+        Your complaint has been submitted successfully.
+      </p>
+
+      <div class="complaint-number-box">
+
+        <span>Complaint Number</span>
+
+        <strong>
+          {{ complaintNumber }}
+        </strong>
+
+      </div>
+
+      <p class="tracking-message">
+        Please save this complaint number for future tracking.
+      </p>
+
+      <button
+        type="button"
+        class="continue-btn"
+        (click)="closeSuccessPopup()">
+
+        Continue
+
+      </button>
+
+    </div>
+
+  </div>
+
+}

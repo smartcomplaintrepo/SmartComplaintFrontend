@@ -1,1 +1,230 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  
+  
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Welcome -->
+    <section class="welcome-section">
+
+      <div>
+        <h2>Hello, User 👋</h2>
+        <p>
+          Manage your complaints and track their status from here.
+        </p>
+      </div>
+
+      <button class="primary-btn" (click)="createComplaint()">
+        + Create Complaint
+      </button>
+
+    </section>
+
+
+    <!-- Statistics -->
+    <section class="stats-grid">
+
+      <div class="stat-card">
+
+        <div class="stat-icon total">
+          📋
+        </div>
+
+        <div>
+          <span>Total Complaints</span>
+          <h2>5</h2>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon pending">
+          ⏳
+        </div>
+
+        <div>
+          <span>Pending</span>
+          <h2>2</h2>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon progress">
+          🔄
+        </div>
+
+        <div>
+          <span>In Progress</span>
+          <h2>1</h2>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon resolved">
+          ✅
+        </div>
+
+        <div>
+          <span>Resolved</span>
+          <h2>2</h2>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Recent Complaints -->
+    <section class="complaints-section">
+
+      <div class="section-header">
+
+        <div>
+          <h2>Recent Complaints</h2>
+          <p>Your latest complaints</p>
+        </div>
+
+        <button class="view-all-btn" (click)="viewComplaints()">
+          View All
+        </button>
+
+      </div>
+
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Complaint No.</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            <tr>
+
+              <td>
+                <strong>CMP-20260820-0001</strong>
+              </td>
+
+              <td>
+                Wi-Fi not working
+              </td>
+
+              <td>
+                IT
+              </td>
+
+              <td>
+                <span class="badge priority-high">
+                  High
+                </span>
+              </td>
+
+              <td>
+                <span class="badge status-progress">
+                  In Progress
+                </span>
+              </td>
+
+              <td>
+                20 Aug 2026
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                <strong>CMP-20260819-0002</strong>
+              </td>
+
+              <td>
+                Projector issue
+              </td>
+
+              <td>
+                Infrastructure
+              </td>
+
+              <td>
+                <span class="badge priority-medium">
+                  Medium
+                </span>
+              </td>
+
+              <td>
+                <span class="badge status-resolved">
+                  Resolved
+                </span>
+              </td>
+
+              <td>
+                19 Aug 2026
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                <strong>CMP-20260818-0003</strong>
+              </td>
+
+              <td>
+                Classroom cleaning
+              </td>
+
+              <td>
+                Cleaning
+              </td>
+
+              <td>
+                <span class="badge priority-low">
+                  Low
+                </span>
+              </td>
+
+              <td>
+                <span class="badge status-pending">
+                  Pending
+                </span>
+              </td>
+
+              <td>
+                18 Aug 2026
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>

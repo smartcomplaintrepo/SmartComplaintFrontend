@@ -1,1 +1,38 @@
-<p>sidebar works!</p>
+<aside class="sidebar">
+
+    <div class="logo">
+        <h2>Smart Complaint</h2>
+        <span>User Portal</span>
+    </div>
+
+    <nav>
+
+        <a class="nav-item" (click)="goToDashboard()">
+            <span>🏠</span>
+            Dashboard
+        </a>
+
+        <a class="nav-item" (click)="createComplaint()">
+            <span>📝</span>
+            Create Complaint
+        </a>
+
+        <a class="nav-item" (click)="viewComplaints()">
+            <span>📋</span>
+            My Complaints
+        </a>
+
+        <!-- Added Profile Item -->
+        <a class="nav-item" (click)="goToProfile()">
+            <span>👤</span>
+            Profile
+        </a>
+
+        <a class="nav-item logout" (click)="logout()">
+            <span>🚪</span>
+            Logout
+        </a>
+
+    </nav>
+
+</aside>
