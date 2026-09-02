@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+userName = 'User';
 
+totalComplaints = 9;
+pendingComplaints = 7;
+inProgressComplaints = 10;
+resolvedComplaints = 6;
 }

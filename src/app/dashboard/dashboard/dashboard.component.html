@@ -1,1 +1,143 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <h2>Smart Complaint</h2>
+      <p>User Portal</p>
+    </div>
+
+    <nav>
+      <a class="active">🏠 &nbsp; Dashboard</a>
+      <a>📄 &nbsp; Create Complaint</a>
+      <a>📋 &nbsp; My Complaints</a>
+      <a>🚪 &nbsp; Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Header -->
+    <div class="header">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Welcome back!</p>
+      </div>
+
+      <div class="user">
+        <div class="user-circle">U</div>
+        <div>
+          <strong>User</strong>
+          <small>usertest.com</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Welcome Card -->
+    <section class="welcome-card">
+      <div>
+        <h2>Hello,{{ userName}} 👋</h2>
+        <p>Manage your complaints and track their status from here.</p>
+      </div>
+
+      <button>+ Create Complaint</button>
+    </section>
+
+    <!-- Statistics Cards -->
+    <section class="stats">
+
+      <div class="stat-card">
+        <div class="icon blue">📋</div>
+        <div>
+          <p>Total Complaints</p>
+          <h2>{{ totalComplaints}}</h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon yellow">⌛</div>
+        <div>
+          <p>Pending</p>
+          <h2>{{pendingComplaints}}</h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon blue">🔄</div>
+        <div>
+          <p>In Progress</p>
+          <h2>{{ inProgressComplaints}}</h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon green">✓</div>
+        <div>
+          <p>Resolved</p>
+          <h2>{{resolvedComplaints}}</h2>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Recent Complaints -->
+    <section class="complaints-card">
+
+      <div class="section-header">
+        <div>
+          <h2>Recent Complaints</h2>
+          <p>Your latest complaints</p>
+        </div>
+
+        <a>View All</a>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Complaint No.</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>CMP-20260820-0001</td>
+            <td>Wi-Fi not working</td>
+            <td>IT</td>
+            <td><span class="priority high">High</span></td>
+            <td><span class="status progress">In Progress</span></td>
+            <td>20 Aug 2026</td>
+          </tr>
+
+          <tr>
+            <td>CMP-20260819-0002</td>
+            <td>Projector issue</td>
+            <td>Infrastructure</td>
+            <td><span class="priority medium">Medium</span></td>
+            <td><span class="status resolved">Resolved</span></td>
+            <td>19 Aug 2026</td>
+          </tr>
+
+          <tr>
+            <td>CMP-20260818-0003</td>
+            <td>Classroom cleaning</td>
+            <td>Cleaning</td>
+            <td><span class="priority low">Low</span></td>
+            <td><span class="status pending">Pending</span></td>
+            <td>18 Aug 2026</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </section>
+
+  </main>
+</div>
