@@ -1,0 +1,240 @@
+.page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 35px;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #172033;
+}
+
+.page-header p {
+  margin-top: 7px;
+  color: #6b7280;
+}
+
+/* Create Complaint Button */
+.create-btn {
+  background: #3f51b5;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background: #303f9f;
+}
+H
+/* Filter Box */
+.filter-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.search-area {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.filter {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.filter label,
+.search-area label {
+  font-weight: bold;
+  color: #374151;
+  margin-right: 5px;
+}
+
+/* Input and Select */
+input,
+select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+input {
+  width: 250px;
+}
+
+input:focus,
+select:focus {
+  border-color: #3f51b5;
+}
+
+/* Complaint Box */
+.complaint-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.complaint-box h2 {
+  margin-top: 0;
+  color: #172033;
+}
+
+/* Table */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+tr:hover {
+  background: #f9fafb;
+}
+
+/* View Button */
+.view-btn {
+  background: #3f51b5;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.view-btn:hover {
+  background: #303f9f;
+}
+
+/* Status Badges */
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge.status.progress {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.badge.status.resolved {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+/* Priority Badges */
+.badge.priority {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge.priority.high {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.badge.priority.medium {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge.priority.low {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+/* Complaint Count */
+.complaint-count {
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+  .page {
+    padding: 20px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .filter-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-area,
+  .filter {
+    display: block;
+    margin-right: 0;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  select {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .complaint-box {
+    padding: 10px;
+  }
+
+  table {
+    min-width: 800px;
+  }
+}

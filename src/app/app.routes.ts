@@ -18,7 +18,7 @@ export const routes: Routes = [
         m => m.CreateComplaintComponent)
   },
   {
-    path: 'complaints',
+    path: 'complaints/list',
     loadComponent: () =>
       import('./complaints/complaint-list/complaint-list/complaint-list.component').then(
         m => m.ComplaintListComponent)
