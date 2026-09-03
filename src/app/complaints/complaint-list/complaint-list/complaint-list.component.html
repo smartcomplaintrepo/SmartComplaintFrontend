@@ -1,122 +1,257 @@
-<div class="page">
+<div class="layout">
 
-  <div class="page-header">
-    <div>
-      <h1>My Complaints</h1>
-      <p>View and track all your submitted complaints.</p>
+  <!-- ================= LEFT SIDEBAR ================= -->
+
+  <div class="sidebar">
+
+    <!-- Logo -->
+    <div class="logo">
+      <h2>Smart Complaint</h2>
+      <span>User Portal</span>
     </div>
 
-    <button class="create-btn" (click)="createComplaint()">
-      + Create Complaint
-    </button>
+
+    <!-- Menu -->
+    <div class="menu">
+
+      <!-- Dashboard -->
+      <a routerLink="/dashboard">
+        <span>🏠</span>
+        <span>Dashboard</span>
+      </a>
+
+
+      <!-- Create Complaint -->
+      <a routerLink="/complaints/create">
+        <span>📝</span>
+        <span>Create Complaint</span>
+      </a>
+
+
+      <!-- My Complaints -->
+      <a routerLink="/complaints/list" class="active">
+        <span>📋</span>
+        <span>My Complaints</span>
+      </a>
+
+
+      <!-- Profile -->
+      <a routerLink="/profile">
+        <span>👤</span>
+        <span>Profile</span>
+      </a>
+
+    </div>
+
+
+    <!-- Logout -->
+    <div class="logout">
+      <a (click)="logout()">
+        <span>🚪</span>
+        <span>Logout</span>
+      </a>
+    </div>
+
   </div>
 
 
-  <div class="filter-box">
+  <!-- ================= MAIN CONTENT ================= -->
 
-    <div class="search-area">
-      <label>Search</label>
-      <input
-        type="text"
-        placeholder="Search complaint number or title..."
-        [(ngModel)]="searchText">
+  <div class="page">
+
+    <!-- Page Header -->
+    <div class="page-header">
+
+      <div>
+        <h1>My Complaints</h1>
+        <p>View and track all your submitted complaints.</p>
+      </div>
+
+      <button
+        class="create-btn"
+        (click)="createComplaint()">
+
+        + Create Complaint
+
+      </button>
+
     </div>
 
-    <div class="filter">
-      <label>Status</label>
-      <select [(ngModel)]="selectedStatus">
-        <option>All Status</option>
-        <option>Pending</option>
-        <option>In Progress</option>
-        <option>Resolved</option>
-      </select>
+
+    <!-- ================= FILTER BOX ================= -->
+
+    <div class="filter-box">
+
+      <!-- Search -->
+      <div class="search-area">
+
+        <label>Search</label>
+
+        <input
+          type="text"
+          placeholder="Search complaint number or title..."
+          [(ngModel)]="searchText">
+
+      </div>
+
+
+      <!-- Status -->
+      <div class="filter">
+
+        <label>Status</label>
+
+        <select [(ngModel)]="selectedStatus">
+
+          <option>All Status</option>
+          <option>Pending</option>
+          <option>In Progress</option>
+          <option>Resolved</option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Priority -->
+      <div class="filter">
+
+        <label>Priority</label>
+
+        <select [(ngModel)]="selectedPriority">
+
+          <option>All Priority</option>
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
+
+        </select>
+
+      </div>
+
     </div>
 
-    <div class="filter">
-      <label>Priority</label>
-      <select [(ngModel)]="selectedPriority">
-        <option>All Priority</option>
-        <option>High</option>
-        <option>Medium</option>
-        <option>Low</option>
-      </select>
-    </div>
 
-  </div>
+    <!-- ================= COMPLAINT LIST ================= -->
+
+    <div class="complaint-box">
+
+      <h2>Complaint List</h2>
+
+      <p class="count">
+        {{ filteredComplaints.length }} complaints found
+      </p>
 
 
-  <div class="complaint-box">
+      <!-- Table -->
+      <div class="table-wrapper">
 
-    <h2>Complaint List</h2>
-    <p class="count">{{ filteredComplaints.length }} complaints found</p>
+        <table>
 
-    <div class="table-wrapper">
+          <!-- Table Header -->
+          <thead>
 
-      <table>
+            <tr>
 
-        <thead>
-          <tr>
-            <th>Complaint No.</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Priority</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+              <th>Complaint No.</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Action</th>
 
-        <tbody>
+            </tr>
 
-          <tr *ngFor="let complaint of filteredComplaints">
+          </thead>
 
-            <td class="complaint-number">
-              {{ complaint.number }}
-            </td>
 
-            <td>{{ complaint.title }}</td>
+          <!-- Table Body -->
+          <tbody>
 
-            <td>{{ complaint.category }}</td>
+            <tr
+              *ngFor="let complaint of filteredComplaints">
 
-            <td>
-              <span
-                class="badge priority"
-                [ngClass]="{
-                  'high': complaint.priority === 'High',
-                  'medium': complaint.priority === 'Medium',
-                  'low': complaint.priority === 'Low'
-                }">
-                {{ complaint.priority }}
-              </span>
-            </td>
 
-            <td>
-              <span
-                class="badge status"
-                [ngClass]="{
-                  'pending': complaint.status === 'Pending',
-                  'progress': complaint.status === 'In Progress',
-                  'resolved': complaint.status === 'Resolved'
-                }">
-                {{ complaint.status }}
-              </span>
-            </td>
+              <!-- Complaint Number -->
+              <td class="complaint-number">
+                {{ complaint.number }}
+              </td>
 
-            <td>{{ complaint.date }}</td>
 
-            <td>
-              <button
-                class="view-btn"
-                (click)="viewComplaint(complaint)">
-                View
-              </button>
-            </td>
+              <!-- Title -->
+              <td>
+                {{ complaint.title }}
+              </td>
 
-          </tr>
 
-        </tbody>
+              <!-- Category -->
+              <td>
+                {{ complaint.category }}
+              </td>
 
-      </table>
+
+              <!-- Priority -->
+              <td>
+
+                <span
+                  class="badge priority"
+                  [ngClass]="{
+                    'high': complaint.priority === 'High',
+                    'medium': complaint.priority === 'Medium',
+                    'low': complaint.priority === 'Low'
+                  }">
+
+                  {{ complaint.priority }}
+
+                </span>
+
+              </td>
+
+
+              <!-- Status -->
+              <td>
+
+                <span
+                  class="badge status"
+                  [ngClass]="{
+                    'pending': complaint.status === 'Pending',
+                    'progress': complaint.status === 'In Progress',
+                    'resolved': complaint.status === 'Resolved'
+                  }">
+
+                  {{ complaint.status }}
+
+                </span>
+
+              </td>
+
+
+              <!-- Date -->
+              <td>
+                {{ complaint.date }}
+              </td>
+
+
+              <!-- Action -->
+              <td>
+
+                <button
+                  class="view-btn"
+                  (click)="viewComplaint(complaint)">
+
+                  View
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
 
     </div>
 
