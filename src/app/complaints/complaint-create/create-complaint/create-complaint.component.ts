@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ComplaintServiceService } from '../../../services/complaint-service.service';
 
 @Component({
   selector: 'app-create-complaint',
@@ -21,29 +22,73 @@ export class CreateComplaintComponent {
   description = '';
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private complaintService: ComplaintServiceService) {}
 
 
-  submitComplaint(): void {
+  // submitComplaint(): void {
 
-    // Temporary validation
-    if (
-      !this.category ||
-      !this.title ||
-      !this.priority ||
-      !this.description
-    ) {
+  //   // Temporary validation
+  //   if (
+  //     !this.category ||
+  //     !this.title ||
+  //     !this.priority ||
+  //     !this.description
+  //   ) {
+  //     alert('Please fill all required fields.');
+  //     return;
+  //   }
+
+
+  //   // Temporary complaint number
+  //   // Later this will come from .NET Core API
+
+  //   this.complaintNumber = 'CMP-20260820-0001';
+
+  //   this.showSuccessPopup = true;
+  // }
+
+submitComplaint(): void {
+  debugger
+    // 1. Structural validation
+    if (!this.category || !this.title || !this.priority || !this.description) {
       alert('Please fill all required fields.');
       return;
     }
 
+    //this.errorMessage = null;
 
-    // Temporary complaint number
-    // Later this will come from .NET Core API
+    // 2. Build payload structure matching the API request contract
+    const payload = {
+      category: this.category,
+      title: this.title,
+      priority: this.priority,
+      description: this.description
+    };
 
-    this.complaintNumber = 'CMP-20260820-0001';
+    // 3. Make the API request
+    this.complaintService.submitComplaint(payload).subscribe({
+      next: (response:any) => {
+        console.log('Complaint Submitted Successfully:', response);
+        
+        // 4. Capture the actual tracking ID returned from your .NET API
+        // Adjust property name (e.g., response.complaintNumber or response.id) based on backend contract
+        this.complaintNumber = response.complaintNumber || response.id; 
+        
+        this.showSuccessPopup = true;
+        this.resetForm();
+      },
+      error: (err:any) => {
+        console.error('Submission Failed:', err);
+        //this.errorMessage = err.error?.message || 'Failed to submit the complaint. Please try again.';
+      }
+    });
+  }
 
-    this.showSuccessPopup = true;
+  resetForm(): void {
+    this.category = '';
+    this.title = '';
+    this.priority = '';
+    this.description = '';
   }
 
 

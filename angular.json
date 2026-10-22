@@ -57,6 +57,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "host": "127.0.0.1",
+            "proxyConfig": "proxy.conf.json"  
+          },
           "configurations": {
             "production": {
               "buildTarget": "SmartComplaintFrontend:build:production"
