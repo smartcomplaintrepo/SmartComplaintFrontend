@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 // 1. Define the data blueprint
 interface Complaint {
-  complaintId: number,
+  complaintId: string,
   complaintNumber: string;
   title: string;
   category: string;
