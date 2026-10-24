@@ -67,7 +67,7 @@
 
       <div>
         <h2>Complaint List</h2>
-        <span>5 complaints found</span>
+        <span>{{complaintsList.length}} complaints found</span>
       </div>
 
     </div>
@@ -117,7 +117,7 @@
           </td>
           <td>{{ complaint.date }}</td>
           <td>
-            <button class="view-btn" (click)="viewComplaint(complaint.complaintNumber)">
+            <button class="view-btn" (click)="viewComplaint(complaint.complaintId)">
               View
             </button>
           </td>

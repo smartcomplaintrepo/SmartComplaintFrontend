@@ -1,275 +1,145 @@
-<div class="page-container">
+<div class="page-container" *ngIf="complaintData">
 
   <!-- Page Header -->
   <div class="page-header">
-
     <div>
       <h1>Complaint Details</h1>
       <p>View complete information about your complaint.</p>
     </div>
-
-    <button class="back-btn">
+    <button class="back-btn" (click)="backComplaint()">
       ← Back to Complaints
     </button>
-
   </div>
-
 
   <!-- Complaint Header Card -->
   <div class="complaint-header-card">
-
     <div>
-
-      <span class="complaint-label">
-        Complaint Number
-      </span>
-
-      <h2>
-        CMP-20260820-0001
-      </h2>
-
-      <p>
-        Submitted on 20 Aug 2026
-      </p>
-
+      <span class="complaint-label">Complaint Number</span>
+      <h2>{{ complaintData?.complaintNumber }}</h2>
+      <p>Submitted on {{ complaintData?.createdDate | date:'dd MMM yyyy' }}</p>
     </div>
-
 
     <div class="header-status">
-
-      <span class="status-label">
-        Current Status
+      <span class="status-label">Current Status</span>
+      <!-- Dynamic class attachment based on status value if your CSS supports it -->
+      <span class="status-badge" [ngClass]="complaintData?.status?.toLowerCase()">
+        {{ complaintData?.status }}
       </span>
-
-      <span class="status-badge">
-        In Progress
-      </span>
-
     </div>
-
   </div>
-
 
   <!-- Main Grid -->
   <div class="details-grid">
 
-
     <!-- Left Section -->
     <div class="left-section">
 
-
       <!-- Complaint Information -->
       <div class="details-card">
-
         <div class="card-title">
-
           <h2>Complaint Information</h2>
-
         </div>
-
 
         <div class="info-grid">
-
           <div class="info-item">
-
             <span>Title</span>
-
-            <strong>
-              Wi-Fi not working
-            </strong>
-
+            <strong>{{ complaintData?.title }}</strong>
           </div>
 
-
           <div class="info-item">
-
             <span>Category</span>
-
-            <strong>
-              IT / Computer
-            </strong>
-
+            <strong>{{ complaintData?.category }}</strong>
           </div>
 
-
           <div class="info-item">
-
             <span>Priority</span>
-
-            <strong class="priority-high">
-              High
+            <!-- Dynamic styling hook for low/medium/high priority -->
+            <strong [className]="'priority-' + complaintData?.priority?.toLowerCase()">
+              {{ complaintData?.priority }}
             </strong>
-
           </div>
-
 
           <div class="info-item">
-
             <span>Submitted By</span>
-
-            <strong>
-              User
-            </strong>
-
+            <strong>User #{{ complaintData?.userId }}</strong>
           </div>
-
         </div>
-
 
         <div class="description-section">
-
           <span>Description</span>
-
-          <p>
-            Internet connection is not working in Lab 2.
-            Multiple computers are unable to access the internet.
-          </p>
-
+          <p>{{ complaintData?.description }}</p>
         </div>
-
       </div>
-
 
       <!-- Admin Remark -->
       <div class="details-card">
-
         <div class="card-title">
-
           <h2>Admin Remark</h2>
-
         </div>
-
-        <div class="remark-box">
-
-          <p>
-            Technician has been assigned to check the
-            internet connection.
-          </p>
-
-          <span>
-            Updated on 20 Aug 2026
+        
+        <!-- Checks if admin remark exists, otherwise falls back to a placeholder -->
+        <div class="remark-box" *ngIf="complaintData?.adminRemark; else noRemark">
+          <p>{{ complaintData?.adminRemark }}</p>
+          <span *ngIf="complaintData?.updatedDate">
+            Updated on {{ complaintData?.updatedDate | date:'dd MMM yyyy, hh:mm a' }}
           </span>
-
         </div>
-
+        <ng-template #noRemark>
+          <div class="remark-box empty">
+            <p class="text-muted">No remarks updated by the administrator yet.</p>
+          </div>
+        </ng-template>
       </div>
-
 
     </div>
 
-
-    <!-- Right Section -->
+    <!-- Right Section (Timeline) -->
     <div class="right-section">
-
-
-      <!-- Status Timeline -->
       <div class="details-card timeline-card">
-
         <div class="card-title">
-
           <h2>Complaint Status</h2>
-
         </div>
-
 
         <div class="timeline">
-
-
-          <!-- Submitted -->
+          <!-- Submitted (Always Completed) -->
           <div class="timeline-item completed">
-
-            <div class="timeline-icon">
-              ✓
-            </div>
-
+            <div class="timeline-icon">✓</div>
             <div class="timeline-content">
-
-              <strong>
-                Complaint Submitted
-              </strong>
-
-              <span>
-                20 Aug 2026, 10:30 AM
-              </span>
-
+              <strong>Complaint Submitted</strong>
+              <span>{{ complaintData?.createdDate | date:'dd MMM yyyy, hh:mm a' }}</span>
             </div>
-
           </div>
 
-
-          <!-- Under Review -->
-          <div class="timeline-item completed">
-
-            <div class="timeline-icon">
-              ✓
-            </div>
-
+          <!-- Pending State Status -->
+          <div class="timeline-item" [ngClass]="{'active': complaintData?.status === 'Pending', 'completed': complaintData?.status !== 'Pending'}">
+            <div class="timeline-icon">{{ complaintData?.status !== 'Pending' ? '✓' : '●' }}</div>
             <div class="timeline-content">
-
-              <strong>
-                Under Review
-              </strong>
-
-              <span>
-                20 Aug 2026, 11:15 AM
-              </span>
-
+              <strong>Pending Review</strong>
+              <span>{{ complaintData?.status === 'Pending' ? 'Awaiting assignment' : 'Reviewed' }}</span>
             </div>
-
           </div>
 
-
-          <!-- In Progress -->
-          <div class="timeline-item active">
-
-            <div class="timeline-icon">
-              ●
-            </div>
-
+          <!-- In Progress State Status -->
+          <div class="timeline-item" [ngClass]="{'active': complaintData?.status === 'In Progress', 'completed': complaintData?.status === 'Resolved'}">
+            <div class="timeline-icon">{{ complaintData?.status === 'Resolved' ? '✓' : (complaintData?.status === 'In Progress' ? '●' : '○') }}</div>
             <div class="timeline-content">
-
-              <strong>
-                In Progress
-              </strong>
-
-              <span>
-                20 Aug 2026, 12:00 PM
-              </span>
-
+              <strong>In Progress</strong>
+              <span>{{ complaintData?.status === 'In Progress' ? 'Technician assigned' : 'Pending status change' }}</span>
             </div>
-
           </div>
 
-
-          <!-- Resolved -->
-          <div class="timeline-item">
-
-            <div class="timeline-icon">
-              ○
-            </div>
-
+          <!-- Resolved State Status -->
+          <div class="timeline-item" [ngClass]="{'completed active-resolved': complaintData?.status === 'Resolved'}">
+            <div class="timeline-icon">{{ complaintData?.status === 'Resolved' ? '✓' : '○' }}</div>
             <div class="timeline-content">
-
-              <strong>
-                Resolved
-              </strong>
-
-              <span>
-                Pending
-              </span>
-
+              <strong>Resolved</strong>
+              <span>{{ complaintData?.updatedDate ? (complaintData?.updatedDate | date:'dd MMM yyyy, hh:mm a') : 'Pending' }}</span>
             </div>
-
           </div>
-
 
         </div>
-
       </div>
-
-
     </div>
 
   </div>
-
 </div>

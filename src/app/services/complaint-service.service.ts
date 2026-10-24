@@ -34,4 +34,18 @@ export class ComplaintServiceService {
 
     return this.http.get<any[]>(this.apiUrl+'GetMyComplaints', { headers });
   }
+
+
+  getComplaintById(id: string): Observable<any> {
+  const token = localStorage.getItem('token');
+  
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+
+  // Appends the ID to the endpoint path (e.g., GetComplaintById/YOUR_ID)
+  return this.http.get<any>(`${this.apiUrl}GetComplaintById/${id}`, { headers });
+}
+
 }
